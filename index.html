@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+    <title>Elinv to PNG</title>
+    <link rel="stylesheet" href="./activos/estilos.css">
+
+</head>
+
+<body>
+    <div class="titulo">
+        <span class="titcont">
+            <span style="font-size: 24px;">
+                <a href="https://www.google.com.ar/search?q=elinv" target="_blank" title="+ elinv">Elinv</a>
+            </span><hr>
+            AVIF, etc to PNG<br>
+            Image save as PNG 👇<br>
+        </span>
+    </div>
+    <!-- Imágen transformada -->
+    <canvas id="avif_png"></canvas>
+
+    <!-- Imagen soltada -->
+    <div class="imgSubidaSalida">
+        <label for="imgFile" class="btn btn-primary">Carga</label>
+        <strong>O</strong>
+        <span class="contenedor">
+            Suelta la imagen aquí.
+            <input type="file" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="imgFile" />
+        </span>
+    </div>
+    <div id="imgOriginal"></div>
+
+    <script>
+        // Arrastrar y soltar funciones INICIO
+        "use strict";
+        function dragNdrop(event) {
+            let fileName = URL.createObjectURL(event.target.files[0]);
+            let contPreview = document.getElementById("imgOriginal");
+            let imgPrev = document.createElement("img");
+            imgPrev.setAttribute("src", fileName);
+            contPreview.appendChild(imgPrev);
+
+            // tamaño de la imagen
+            setTimeout(() => {
+                let ancho = imgPrev.naturalWidth;
+                let alto = imgPrev.naturalHeight;
+                // función dibujo
+                drawImage(ancho, alto, imgPrev)
+            }, 1000);
+        }
+        function drag() {
+            try {
+                document.getElementById('uploadFile').parentNode.className = 'arrastrando contenedor';
+            } catch (error) {
+                console.log("");
+            }
+
+        }
+        function drop() {
+            try {
+                document.getElementById('uploadFile').parentNode.className = 'contenedor';
+            } catch (error) {
+                console.log("");
+            }
+        }
+        
+        // Convertimos
+        function drawImage(ancho, alto, img) {
+            let canvElv = document.getElementById("avif_png");
+            let cContex = canvElv.getContext("2d");
+            // Ancho y alto del canvas
+            canvElv.width = ancho;
+            canvElv.height = alto;
+            // Copiamos la imagen
+            cContex.drawImage(img, 0, 0);
+        }
+        // Arrastrar y soltar funciones FIN
+    </script>
+
+</body>
+
+</html>
