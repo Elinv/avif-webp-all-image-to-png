@@ -14,6 +14,16 @@ y la salvan a disco como PNG.
         <img src="topng.png" 
     </a>    
 </p>
+<p align="center">
+    <a href="" rel="noopener">
+        <img src="topng1.png" 
+    </a>    
+</p>
+<p align="center">
+    <a href="" rel="noopener">
+        <img src="topng2.png" 
+    </a>    
+</p>
 - Ver info de Elinv en Google Search:
 
 <a href="https://www.google.com.ar/search?q=elinv">
